@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :require_login 
     before_action :set_review
-    skip_before_action :set_review, only: [:new, :create]
+    skip_before_action :set_review, only: [:new, :create, :destroy]
 
     def new 
         @review = Review.new
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
         if @review.update(review_params)
             redirect_to review_path(@review)
         else 
-            redirect_to edit_review_path
+            redirect_to edit_review_path(@review)
         end
 
     end 
