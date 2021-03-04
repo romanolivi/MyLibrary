@@ -1,0 +1,14 @@
+<%= form_for(@review) do |r| %> 
+    <%= r.label :stars %> 
+    <%= r.number_field :stars %> 
+
+    <%= r.label :content %> 
+    <%= r.text_area :content %> 
+
+    <%= r.hidden_field :user_id, value: current_user.id %> 
+
+    <%= r.hidden_field :book_id, value: @book.id %> 
+
+    <%= r.button "Submit" %> 
+    
+<% end %> 

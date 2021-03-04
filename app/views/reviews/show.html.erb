@@ -1,0 +1,13 @@
+<h2><%= @review.user.username %>'s review for <%= @review.book %></h2>
+
+<p>Stars: <%= @review.stars %> out of 5 stars %></p>
+
+<p>Review Message: <%= @review.content %></p>
+
+<%= if current_user.id == @review.user_id %>
+    <%= link_to "Edit Review", edit_book_review_path(@review.book, @review) %>
+<% end %> 
+
+<%= if current_user.id == @review.user_id %>
+    <%= button_to "Delete Review", book_review_path(@review.book, @review), method: :delete %>
+<% end %> 
