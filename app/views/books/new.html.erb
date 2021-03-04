@@ -1,0 +1,9 @@
+<h1>New Book</h1>
+
+<h4> Fill the form below</h4>
+
+<%= if flash[:message] %> 
+    <%= flash[:message] %> 
+<% end %> 
+
+<%= render 'form' %> 

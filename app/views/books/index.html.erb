@@ -1,0 +1,23 @@
+<h1>Book Page</h1> 
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Page Count</th>
+    </tr>
+
+    <%= @books.each do |a| %> 
+    <tr>
+        <td><%= a.name %></td>
+        <td><%= a.author %></td>
+        <td><%= a.genre %></td>
+        <td><%= a.page_count %></td>
+        <td><%= link_to "Show Page", book_path(a)%></td>
+    </tr>
+    <% end %> 
+
+</table>
+

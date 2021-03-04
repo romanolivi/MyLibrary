@@ -1,0 +1,15 @@
+<h3>Create your MyLibrary account below</h3>
+
+<%= if flash[:message] %> 
+    <%= flash[:message] %> 
+<%= end %> 
+
+<%= form_for(@user) do |a| %> 
+    <%= a.label :username %> 
+    <%= a.text_field :username %> 
+
+    <%= a.label :password %> 
+    <% a.password_field :password %> 
+
+    <%= a.submit "Sign up" %> 
+<% end %> 

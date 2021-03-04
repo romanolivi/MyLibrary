@@ -1,0 +1,29 @@
+<h2><%= "Welcome #{@user.username}"%></h2>
+
+Books reviewed: 
+<ul>
+<%= @user.books.each do |a| %> 
+    <%= link_to a.name, book_path(a) %> (by: <%= a.author %>)
+<% end %> 
+</ul> 
+
+Reviews by genre: 
+<ul>
+<%= @user.books.each do |a| %> 
+    <%= "#{a.genre} - #{genre_count} reviews" %>
+<% end %> 
+</ul>
+
+Number of books reviewed: <p><%= @user.reviews.count%> reviews</p>
+
+All reviews: 
+<p>Click <%= link_to "my reviews", user_reviews_path(@user)%> to see all of your reviews"</p>
+
+All books:
+<%= link_to "Book Page", books_path %> 
+
+<%= link_to 'Create a new book', new_book_path %>
+
+
+
+

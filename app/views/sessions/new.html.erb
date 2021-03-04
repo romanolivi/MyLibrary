@@ -1,0 +1,11 @@
+<h3>Log in to your MyLibrary account below</h3>
+
+<%= form_for(@user) do |u| %> 
+    <%= u.label :username %> 
+    <%= u.text_field :username %> 
+
+    <%= u.label :password %> 
+    <%= u.password_field :password %> 
+
+    <%= u.submit 'Log in %> 
+<% end %> 
