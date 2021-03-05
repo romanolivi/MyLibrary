@@ -2,6 +2,10 @@ class BooksController < ApplicationController
     before_action :set_book
     skip_before_action :set_book, only: [:new, :create, :index]
 
+    def index 
+        @books = Book.all 
+    end
+
     def new 
         @book = Book.new
     end

@@ -8,10 +8,17 @@
 
 <h3>Reviews</h3>
 <%= @book.reviews.each do |a| %> 
+    <div style="border:1px solid black;">
     Stars: "<%= a.stars %> out of 5"
     <br><br>
     Message: <%= a.content %> 
-<% end %> 
+    </div>
+<% end %><br>
 
+<br>
 
 <%= link_to "New Review", new_book_review_path(@book) %>
+
+<br><br>
+
+<%= link_to 'Home page', user_path(current_user.id) %> 

@@ -3,8 +3,39 @@ class ReviewsController < ApplicationController
     before_action :set_review
     skip_before_action :set_review, only: [:new, :create, :destroy]
 
+    def index 
+        if params[:book_id]
+            if Book.where(id: params[:book_id]).present?
+                @reviews = Book.find(params[:book_id]).reviews 
+            else 
+                flash[:alert] = "Artist not found."
+                redirect_to books_path
+            end
+        else
+            @reviews = review.all 
+        end
+    end
+
+    def show 
+        if params[:book_id]
+            if Review.where(id: params[:id]).present?
+                @review = Review.find(params[:id])
+            else 
+                @book = Book.find(params[:book_id])
+                flash[:alert] = "Review doesn't exist"
+                redirect_to book_reviews_path(@book)
+            end
+        else 
+            @review = Review.find(params[:id])
+        end
+    end
+
     def new 
-        @review = Review.new
+        if params[:book_id] && !Book.exists?(params[:book_id])
+            redirect_to books_path, alert: "Book doesn't exist"
+        else 
+            @review = Review.new(book_id: params[:book_id])
+        end
     end 
 
     def create
@@ -13,20 +44,21 @@ class ReviewsController < ApplicationController
         if @review.save 
             redirect_to review_path(@review)
         else 
+            raise params inspect
             redirect_to new_review_path 
         end
 
-    end 
-
-    def show 
-    end 
+    end  
 
     def edit 
+        
     end 
 
     def updated 
         # @review = Review.find_by(id: params[:id])
-        if @review.update(review_params)
+        @review.update(review_params)
+
+        if @review.save
             redirect_to review_path(@review)
         else 
             redirect_to edit_review_path(@review)
@@ -35,9 +67,11 @@ class ReviewsController < ApplicationController
     end 
 
     def destroy 
-        Review.find(params[:id]).destroy
-        redirect_to '/'
-        flash[:message] = "Review successfully deleted"
+        @review = Review.find(params[:id])
+        @user = @review.user 
+        @review.destroy 
+        flash[:notice] = "Review successfully deleted"
+        redirect_to user_path(@user)
     end 
 
 

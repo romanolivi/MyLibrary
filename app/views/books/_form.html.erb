@@ -1,15 +1,24 @@
 <%= form_for(@book) do |a| %> 
-    <%= a.label :name %> 
-    <%= a.text_field :name %> 
+    
+    <%= a.label :name %><br>
+    <%= a.text_field :name %><br> 
 
-    <%= a.label :author %> 
-    <%= a.text_field :author %> 
+    <br>
 
-    <%= a.label :genre %> 
-    <%= a.text_field :genre %> 
+    <%= a.label :author %><br>
+    <%= a.text_field :author %><br> 
 
-    <%= a.label :page_count %> 
-    <%= a.number_field :page_count %> 
+    <br>
+
+    <%= a.label :genre %><br>
+    <%= a.text_field :genre %><br> 
+
+    <br>
+
+    <%= a.label :page_count %><br>
+    <%= a.number_field :page_count %><br>
+
+    <br>
 
     <%= a.button "Submit" %> 
 

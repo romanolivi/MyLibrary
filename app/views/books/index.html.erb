@@ -1,6 +1,9 @@
-<h1>Book Page</h1> 
 
-<table class="table">
+<div style="text-align:center;">
+<h1>MyLibrary Book Page</h1> 
+</div>
+
+<table style="border:1px solid black; margin-left:auto;margin-right:auto;border-spacing: 30px 0px;">
 
     <tr>
         <th>Name</th>
@@ -10,13 +13,13 @@
     </tr>
 
     <%= @books.each do |a| %> 
-    <tr>
-        <td><%= a.name %></td>
-        <td><%= a.author %></td>
-        <td><%= a.genre %></td>
-        <td><%= a.page_count %></td>
-        <td><%= link_to "Show Page", book_path(a)%></td>
-    </tr>
+        <tr>
+            <td><%= a.name %></td>
+            <td><%= a.author %></td>
+            <td><%= a.genre %></td>
+            <td><%= a.page_count %></td>
+            <td><%= link_to "Show Page", book_path(a)%></td>
+        </tr>
     <% end %> 
 
 </table>
