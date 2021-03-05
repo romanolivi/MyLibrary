@@ -1,7 +1,11 @@
 <ul>
 <% @reviews.each do |r| %>
-  <li>Book: <%= book_link(r) %>. Review: <%= link_to "#{review.stars} stars", review_path(r) %></li>
+  <li>Book: <%= book_link(r) %></li>
+      Stars: <%= link_to "#{r.stars} stars", review_path(r) %><br>
+      Message: <%= r.content %><br>
+      <br>
 <% end %>
 </ul>
 <br>
-<%= link_to "Add New Song", new_song_path %>
+
+<%= link_to 'Home Page', user_path(current_user) %>

@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
                 redirect_to books_path
             end
         else
-            @reviews = review.all 
+            @reviews = Review.all 
         end
     end
 

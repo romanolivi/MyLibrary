@@ -2,14 +2,14 @@
 
 Books reviewed: 
 <ul>
-<%= @user.books.each do |a| %> 
+<% @user.books.each do |a| %> 
     <li><%= link_to a.name, book_path(a) %> (by: <%= a.author %><br>
 <% end %> 
 </ul> 
 
 Reviews by genre: 
 <ul>
-<%= @user.books.each do |a| %> 
+<% @user.books.each do |a| %> 
     <li><%= a.genre %></li>
 <% end %> 
 </ul>

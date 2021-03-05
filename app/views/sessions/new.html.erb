@@ -1,11 +1,15 @@
 <h3>Log in to your MyLibrary account below</h3>
 
-<%= form_for(@user) do |u| %> 
-    <%= u.label :username %> 
-    <%= u.text_field :username %> 
+<%= form_tag ({controller: "sessions", action: "create", method: "post"}) do %> 
 
-    <%= u.label :password %> 
-    <%= u.password_field :password %> 
+    <label>Username: </label><br> 
+    <input type="text" name="username"><br> 
 
-    <%= u.submit 'Log in' %> 
+    <label>Password: </label><br> 
+    <input type="password" name="password"><br>
+
+    <br>
+
+    <input type="submit" value="Log in">
+
 <% end %> 
