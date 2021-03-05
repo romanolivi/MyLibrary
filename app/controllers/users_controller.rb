@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     def create 
         @user = User.new(user_params)
 
-        if @user.save && @user.authenticate(params[:user][:password])
+        if @user.save && @user.authenticate(params[:password])
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.permit(:username, :password)
     end
 
     def require_login 

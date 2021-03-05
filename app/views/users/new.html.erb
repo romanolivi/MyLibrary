@@ -4,14 +4,18 @@
     <%= flash[:message] %> 
 <% end %><br><br>
 
-<%= form_for(@user) do |a| %> 
-    <%= a.label :username %><br>
-    <%= a.text_field :username %><br>
+<%= form_tag ({controller: "users", action: "create", method: "post"}) do %> 
+
+    <label>Username: </label><br> 
+    <input type="text" name="username"><br> 
 
     <br>
 
-    <%= a.label :password %>
-    <%= a.password_field :password %><br>
+    <label>Password: </label><br> 
+    <input type="password" name="password"><br>
 
-    <%= a.submit "Sign up" %> 
+    <br>
+
+    <input type="submit" value="Sign Up">
+
 <% end %> 
