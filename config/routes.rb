@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   get 'logout' => 'sessions#destroy'
 
-  get '/auth/facebook' => 'sessions#facebook'
+  get '/auth/github' => 'sessions#create'
  
 end

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     skip_before_action :require_login, only: [:new, :create]
 
     def new 
-        if current_user
+        if logged_in?
             redirect_to user_path(current_user)
         else 
             @user = User.new 

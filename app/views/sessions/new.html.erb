@@ -1,15 +1,29 @@
 <h3>Log in to your MyLibrary account below</h3>
 
-<%= form_tag ({controller: "sessions", action: "create", method: "post"}) do %> 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-    <label>Email: </label><br> 
-    <input type="text" name="email"><br> 
+<%= form_for(@user) do |a| %> 
 
-    <label>Password: </label><br> 
-    <input type="password" name="password"><br>
+    <%= a.label :email, "Email: " %> 
+    <%= a.text_field :email %><br>
 
     <br>
 
-    <input type="submit" value="Log in">
+    <%= a.label :password, "Password: " %> 
+    <%= a.password_field :password %><br>
+
+
+    <br>
+
+    <%= a.submit "Log In" %>
 
 <% end %> 

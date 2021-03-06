@@ -12,7 +12,8 @@
     <li>By: <%= a.user.username %><br>
     Stars: "<%= a.stars %> out of 5"
     <br><br>
-    Message: <%= a.content %><br><br>
+    Message: <%= a.content %><br>
+    <%= link_to 'Edit Review', edit_user_review_path(current_user, a) if current_user == a.user %> <br>
 <% end %><br>
 </ol>
 

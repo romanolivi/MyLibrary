@@ -4,9 +4,9 @@ class ReviewsController < ApplicationController
     skip_before_action :set_review, only: [:new, :create, :destroy]
 
     def index 
-        if params[:book_id]
-            if Book.where(id: params[:book_id]).present?
-                @reviews = Book.find(params[:book_id]).reviews 
+        if params[:user_id]
+            if User.where(id: params[:user_id]).present?
+                @reviews = User.find(params[:user_id]).reviews 
             else 
                 flash[:alert] = "Artist not found."
                 redirect_to books_path
@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
         
     end 
 
-    def updated 
+    def update
         # @review = Review.find_by(id: params[:id])
         @review.update(review_params)
 

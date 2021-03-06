@@ -1,12 +1,19 @@
 <h2>Create your MyLibrary account below</h2>
 
-<% if flash[:message] %> 
-    <%= flash[:message] %> 
-<% end %><br><br>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_tag ({controller: "users", action: "create", method: "post"}) do %> 
 
-    <label>Email: </label><br> 
+    <label>Email: </label>
     <input type="text" name="email"><br> 
 
     <br>
@@ -19,7 +26,7 @@
     <br>
 
 
-    <label>Password: </label><br> 
+    <label>Password: </label>
     <input type="password" name="password"><br>
 
     <br>
