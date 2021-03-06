@@ -1,5 +1,9 @@
 <h2>Review for <%= book_link(@review) %></h2>
 
+<p>Review written by: <%= @review.user.username %></p><br>
+
+<br>
+
 <p>Star rating: <%= @review.stars %> stars</p>
 
 <br><br>

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else 
-            flash[:message] = "Username or Password incorrect. Try again"
+            flash[:message] = "Email or Password incorrect. Try again"
             render :new
         end
     end 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:email, :username, :password)
     end
 
     def require_login 

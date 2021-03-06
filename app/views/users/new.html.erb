@@ -6,10 +6,18 @@
 
 <%= form_tag ({controller: "users", action: "create", method: "post"}) do %> 
 
-    <label>Username: </label><br> 
-    <input type="text" name="username"><br> 
+    <label>Email: </label><br> 
+    <input type="text" name="email"><br> 
 
     <br>
+
+
+    <label>Username:</label>
+    <input type="text" name="username"><br>
+
+
+    <br>
+
 
     <label>Password: </label><br> 
     <input type="password" name="password"><br>
