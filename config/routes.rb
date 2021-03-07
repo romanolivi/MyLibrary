@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'application#home'
 
-  resources :users, only: [:new, :create, :edit, :update, :destroy, :show] do 
-    resources :reviews, only: [:show, :edit, :new, :index]
+  resources :users do 
+    resources :reviews, only: [:show, :edit, :new, :index, :create]
   end
 
   resources :books do 
@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   get 'logout' => 'sessions#destroy'
 
-  get '/auth/github' => 'sessions#create'
+  get '/auth/:provider/callback' => 'sessions#facebook'
  
 end

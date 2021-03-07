@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
     belongs_to :book
     belongs_to :user 
+    scope :star_rating, ->(rating) {where("stars> ?", rating) }
+    
    
     def book_name
         self.try(:book).try(:name)
