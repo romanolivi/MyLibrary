@@ -4,7 +4,7 @@
       Stars: <%= link_to "#{r.stars} stars", review_path(r) %><br>
       Message: <%= r.content %><br>
       <%= link_to 'Edit Review', edit_user_review_path(r.user, r) if current_user == r.user %> 
-      <br>
+      <br><br>
 <% end %>
 </ul>
 <br>
