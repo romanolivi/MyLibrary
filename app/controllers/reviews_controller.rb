@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 
     def new 
         if params[:book_id] && !Book.exists?(params[:book_id])
-            redirect_to books_path, alert: "Book doesn't exist"
+            redirect_to books_path
         else 
             @review = Review.new(book_id: params[:book_id])
         end
@@ -44,7 +44,6 @@ class ReviewsController < ApplicationController
         if @review.save 
             redirect_to review_path(@review)
         else 
-            raise params inspect
             redirect_to new_review_path 
         end
 

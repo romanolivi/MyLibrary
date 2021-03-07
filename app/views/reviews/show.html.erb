@@ -2,11 +2,9 @@
 
 <p>Review written by: <%= @review.user.username %></p><br>
 
-<br>
 
-<p>Star rating: <%= @review.stars %> stars</p>
+<p>Star rating: <%= @review.stars %> stars out of 5</p>
 
-<br>
 
 <p>Review Message: <%= @review.content %></p>
 
@@ -15,3 +13,5 @@
 <p>Go back to home page: <%= link_to "Home Page", user_path(@review.user) %></p>
 
 <p>Visit book page: <%= book_link(@review) %></p>
+
+<%= button_to "Delete Review", review_path(@review), method: :delete if current_user == @review.user %> 
