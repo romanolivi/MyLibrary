@@ -14,4 +14,10 @@
 
 <p>Visit book page: <%= book_link(@review) %></p>
 
+<br>
+
+<p><%= link_to 'Edit Review', edit_user_review_path(@review.user, @review) if @review.user == current_user %><p>
+
+<br>
+
 <%= button_to "Delete Review", review_path(@review), method: :delete if current_user == @review.user %> 

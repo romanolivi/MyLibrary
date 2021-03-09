@@ -13,7 +13,7 @@
     Stars: "<%= a.stars %> out of 5"
     <br><br>
     Message: <%= a.content %><br>
-    <p><%= link_to 'Edit Review', edit_user_review_path(current_user, a) if current_user == a.user %> or <%= link_to 'Delete Review', delete_user_review_path(a.user, a) %> <br>
+    <p><%= link_to 'Edit Review', edit_user_review_path(current_user, a) if current_user == a.user %><br>
 <% end %><br>
 </ol>
 

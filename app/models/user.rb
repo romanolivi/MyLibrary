@@ -14,10 +14,6 @@ class User < ApplicationRecord
         end
     end
 
-    def genre_count
-        self.books.genre.count 
-    end
-
 
     
 end

@@ -1,3 +1,17 @@
-<h2>Edit Review Form</h2>
+<div style="text-align:center;">
+    <h2>Edit <%= @review.book.name %> Review</h2>
 
-<%= render 'review' %> 
+    <% if @review.errors.any? %>
+        <div>
+            <h2>There were some errors:</h2>
+            <ul>
+            <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+
+    <%= render 'review' %> 
+</div>
