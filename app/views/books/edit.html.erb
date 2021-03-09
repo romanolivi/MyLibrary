@@ -2,8 +2,15 @@
 
 <h4> Fill the form below to edit this book</h4>
 
-<% if flash[:message] %> 
-    <%= flash[:message] %> 
-<% end %> 
+<% if @book.errors.any? %>
+        <di v>
+            <h2>There were some errors:</h2>
+            <ul>
+            <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+<% end %>
 
 <%= render 'form' %> 
