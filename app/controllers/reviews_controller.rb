@@ -5,10 +5,12 @@ class ReviewsController < ApplicationController
 
     def index 
         if params[:user_id]
-            if User.where(id: params[:user_id]).present?
-                @reviews = User.find(params[:user_id]).reviews 
+            if User.where(id: params[:user_id]).present? && params[:stars]
+                @reviews = User.find(params[:user_id]).reviews.star_rating(params[:stars])
+                
+            elsif User.where(id: params[:user_id]).present?
+                @reviews = User.find(params[:user_id]).reviews
             else 
-                flash[:alert] = "Artist not found."
                 redirect_to books_path
             end
         else
@@ -16,13 +18,14 @@ class ReviewsController < ApplicationController
         end
     end
 
+
+
     def show 
         if params[:book_id]
             if Review.where(id: params[:id]).present?
                 @review = Review.find(params[:id])
             else 
                 @book = Book.find(params[:book_id])
-                flash[:alert] = "Review doesn't exist"
                 redirect_to book_reviews_path(@book)
             end
         else 
@@ -39,7 +42,7 @@ class ReviewsController < ApplicationController
     end 
 
     def create
-        @review = Review.create(review_params)
+        @review = Review.new(review_params)
 
         if @review.save 
             redirect_to review_path(@review)
@@ -77,7 +80,7 @@ class ReviewsController < ApplicationController
     private 
 
     def review_params 
-        params.require(:review).permit(:content, :stars, :user_id, :book_id)
+        params.permit(:content, :stars, :user_id, :book_id)
     end
 
     def require_login 

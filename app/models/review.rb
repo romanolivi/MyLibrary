@@ -3,7 +3,7 @@ class Review < ApplicationRecord
     belongs_to :user 
     validates :stars, numericality: { less_than_or_equal_to: 5,  only_integer: true }
     validates :stars, numericality: { greater_than_or_equal_to: 1,  only_integer: true }
-    scope :star_rating, ->(rating) {where("stars> ?", rating) }
+    scope :star_rating, ->(stars) {where("stars == ?", stars) }
     validates :content, length: { minimum: 20 }
     
 

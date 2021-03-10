@@ -9,4 +9,14 @@
 </ul>
 <br>
 
+<%= form_tag(user_reviews_path(current_user), :method => :get) do %> 
+  <label>Select a number to filter reviews:</label>
+  <input type="number" name="stars" min="1" max="5"> 
+  <br>
+  <input type="Submit" value="Filter">
+<% end %> 
+
+<br><br>
+
 <%= link_to 'Home Page', user_path(current_user) %>
+
