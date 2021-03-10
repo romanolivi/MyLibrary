@@ -80,7 +80,7 @@ class ReviewsController < ApplicationController
     private 
 
     def review_params 
-        params.permit(:content, :stars, :user_id, :book_id)
+        params.require(:review).permit(:content, :stars, :user_id, :book_id)
     end
 
     def require_login 
